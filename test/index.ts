@@ -1,5 +1,20 @@
 import QPAY from "../src/index";
 import { payment, invoice } from "../src/index";
+const jsonToQueryString = (json) => {
+  return Object.keys(json)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(json[key])}`)
+    .join("&");
+};
+
+// Example usage:
+const json = {
+  name: "John Doe",
+  age: 25,
+  city: "New York",
+};
+
+const queryString = jsonToQueryString(json);
+console.log(queryString); // Output: "name=John%20Doe&age=25&city=New%20York"
 QPAY.auth
   .TOKEN({
     username: "TOGTOKH_DEV",
