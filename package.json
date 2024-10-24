@@ -1,7 +1,7 @@
 {
   "name": "vista-co",
-  "version": "0.1.5",
-  "description": "qpay api",
+  "version": "1.0.0",
+  "description": "vista api",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -16,19 +16,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/togtokh-dev/library/payment/qpay.git"
+    "url": "git+https://github.com/togtokh-dev/vista-co.git"
   },
   "keywords": [
-    "qpay",
+    "vista",
     "axios",
     "togtokh.dev"
   ],
   "author": "TOGTOKH.DEV",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/togtokh-dev/library/payment/qpay/issues"
+    "url": "https://github.com/togtokh-dev/vista-co/issues"
   },
-  "homepage": "https://gitlab.com/togtokh-dev/library/payment/qpay/#readme",
+  "homepage": "https://github.com/togtokh-dev/vista-co/#readme",
   "dependencies": {
     "axios": "^1.6.2",
     "axios-master": "^1.1.4",

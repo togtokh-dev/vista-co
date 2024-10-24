@@ -1,8 +1,11 @@
 import v1 from "./v1";
-export const jsonToQueryString = (json: { [key: string]: any }): string => {
-  return Object.keys(json)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(json[key])}`)
+export const jsonToQueryString = (params: { [key: string]: any }) => {
+  const query = Object.keys(params)
+    .map(
+      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+    )
     .join("&");
+  return query ? `?${query}` : "";
 };
 
 export const config: {
@@ -10,12 +13,14 @@ export const config: {
   host: string;
   regionCode: string;
 } = {
-  token: "8dfa4c677b7245e6a5fe4627a9b1d65e",
-  host: "http://122.201.17.122",
+  token: "",
+  host: "",
   regionCode: "",
 };
-export default {
+const VISTA = {
   v1,
+  config,
   jsonToQueryString,
 };
+export default VISTA;
 export { default as v1 } from "./v1";
