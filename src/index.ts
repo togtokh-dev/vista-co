@@ -12,10 +12,12 @@ export const config: {
   token: string;
   host: string;
   regionCode: string;
+  logger: boolean;
 } = {
   token: "",
   host: "",
   regionCode: "",
+  logger: false,
 };
 const VISTA = {
   v1,

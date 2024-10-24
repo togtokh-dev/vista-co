@@ -395,6 +395,11 @@ const GetUnpaidBookingDetails = async (
       {
         name: "GetUnpaidBookingDetails", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
+        logger(data) {
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
+        },
       }
     );
 
@@ -453,6 +458,11 @@ const MarkBookingAsPaid = async (requestBody: {
       {
         name: "MarkBookingAsPaid", // For logging and debugging purposes
         timeout: 20000, // Timeout of 20 seconds for the request
+        logger(data) {
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
+        },
       }
     );
 
@@ -508,6 +518,11 @@ const StartPaymentForUnpaidBooking = async (requestBody: {
       {
         name: "StartPaymentForUnpaidBooking", // For logging and debugging purposes
         timeout: 20000, // Timeout of 20 seconds for the request
+        logger(data) {
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
+        },
       }
     );
 
@@ -561,6 +576,11 @@ const UpdateUnpaidBooking = async (requestBody: {
       {
         name: "UpdateUnpaidBooking", // For logging and debugging purposes
         timeout: 20000, // Timeout of 20 seconds for the request
+        logger(data) {
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
+        },
       }
     );
 

@@ -57,6 +57,11 @@ const GetBackgroundJobDetails = async (
       {
         name: "GetBackgroundJobDetails", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
+        logger(data) {
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
+        },
       }
     );
 

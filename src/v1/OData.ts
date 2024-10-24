@@ -165,7 +165,9 @@ const AdvanceBookingRules = async (body: {
         name: "AdvanceBookingRules", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -222,7 +224,9 @@ const AdvertisingMediaSets = async (body: {
         name: "AdvertisingMediaSets", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -279,7 +283,9 @@ const AdvertisingProfiles = async (body: {
         name: "AdvertisingProfiles", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -359,7 +365,9 @@ const Attributes = async (body: {
         name: "Attributes", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -524,7 +532,9 @@ const CinemaEvents = async (body: {
         name: "CinemaEvents", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -595,7 +605,9 @@ const CinemaOperatorGroups = async (body: {
         name: "CinemaOperatorGroups", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -661,7 +673,9 @@ const CinemaOperators = async (body: {
         name: "CinemaOperators", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -890,7 +904,9 @@ const Cinemas = async (body: {
         name: "Cinemas", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -946,7 +962,9 @@ const Clients = async (body: {
         name: "Clients", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1011,7 +1029,9 @@ const Clubs = async (body: {
         name: "Clubs", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1068,7 +1088,9 @@ const CustomerRatingTypes = async (body: {
         name: "CustomerRatingTypes", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1138,7 +1160,9 @@ const Deals = async (body: {
         name: "Deals", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1194,7 +1218,9 @@ const EducationLevels = async (body: {
         name: "EducationLevels", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1258,7 +1284,9 @@ const FilmGenres = async (body: {
         name: "FilmGenres", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1315,7 +1343,9 @@ const FilmPersonLinks = async (body: {
         name: "FilmPersonLinks", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1374,7 +1404,9 @@ const FilmPersons = async (body: {
         name: "FilmPersons", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1488,7 +1520,9 @@ const Films = async (body: {
         name: "Films", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1535,7 +1569,9 @@ const GetClient = async (
         name: "GetClient", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1855,7 +1891,9 @@ const GetComingSoonScheduledFilms = async (body: {
         name: "GetComingSoonScheduledFilms", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1911,7 +1949,9 @@ const GetDeliveryWindowsForCinema = async (body: {
         name: "GetDeliveryWindowsForCinema", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -1960,7 +2000,9 @@ const GetLoyaltySettings = async (): Promise<{
         name: "GetLoyaltySettings", // Request identifier for logging and debugging
         timeout: 200000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2047,7 +2089,9 @@ const GetMemberFieldSettings = async (
         name: "GetMemberFieldSettings", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2235,7 +2279,9 @@ const GetNowShowingScheduledFilms = async (body: {
         name: "GetNowShowingScheduledFilms", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2357,7 +2403,9 @@ const GetNowShowingSessions = async (body: {
         name: "GetNowShowingSessions", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2486,7 +2534,9 @@ const GetCinemaScheduledFilms = async (params: {
         name: "GetCinemaScheduledFilms", // Request identifier for logging
         timeout: 20000,
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2514,8 +2564,6 @@ const GetSiteGroupsForCinema = async (params: {
   $orderby?: string;
   $top?: number;
   $skip?: number;
-  connectapitoken?: string;
-  connectRegionCode?: string;
 }): Promise<{
   success: boolean;
   message: string;
@@ -2560,7 +2608,9 @@ const GetSiteGroupsForCinema = async (params: {
         name: "GetSiteGroupsForCinema", // Request identifier for logging
         timeout: 20000,
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2587,8 +2637,6 @@ const IncomeRanges = async (params: {
   $orderby?: string;
   $top?: number;
   $skip?: number;
-  connectapitoken?: string;
-  connectRegionCode?: string;
 }): Promise<{
   success: boolean;
   message: string;
@@ -2616,7 +2664,9 @@ const IncomeRanges = async (params: {
         name: "GetIncomeRanges", // Request identifier for logging
         timeout: 20000,
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2643,8 +2693,6 @@ const Languages = async (params: {
   $orderby?: string;
   $top?: number;
   $skip?: number;
-  connectapitoken?: string;
-  connectRegionCode?: string;
 }): Promise<{
   success: boolean;
   message: string;
@@ -2672,7 +2720,9 @@ const Languages = async (params: {
         name: "GetLanguages", // Request identifier for logging
         timeout: 20000,
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2699,8 +2749,6 @@ const LoyaltyCinemas = async (params: {
   $orderby?: string;
   $top?: number;
   $skip?: number;
-  connectapitoken?: string;
-  connectRegionCode?: string;
 }): Promise<{
   success: boolean;
   message: string;
@@ -2728,7 +2776,9 @@ const LoyaltyCinemas = async (params: {
         name: "GetLoyaltyCinemas", // Request identifier for logging
         timeout: 20000,
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2783,7 +2833,9 @@ const LoyaltyGenrePreferences = async (params: {
         name: "GetLoyaltyGenrePreferences", // Request identifier for logging
         timeout: 20000,
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -2842,7 +2894,9 @@ const LoyaltySettings = async (body: {
         name: "LoyaltySettings", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3011,7 +3065,9 @@ const MembershipPrograms = async (body: {
         name: "MembershipPrograms", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3067,7 +3123,9 @@ const Occupations = async (body: {
         name: "Occupations", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3126,7 +3184,9 @@ const Persons = async (body: {
         name: "Persons", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3192,7 +3252,9 @@ const PlayThroughSessions = async (body: {
         name: "PlayThroughSessions", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3249,7 +3311,9 @@ const Preferences = async (body: {
         name: "Preferences", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3309,7 +3373,9 @@ const PreferenceTypes = async (body: {
         name: "PreferenceTypes", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3379,7 +3445,9 @@ const SalesProfiles = async (body: {
         name: "SalesProfiles", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3493,7 +3561,9 @@ const ScheduledFilms = async (body: {
         name: "ScheduledFilms", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3551,7 +3621,9 @@ const ScheduledFilmSalesProfileLinks = async (body: {
         name: "ScheduledFilmSalesProfileLinks", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3611,7 +3683,9 @@ const ScreenAttributes = async (body: {
         name: "ScreenAttributes", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3715,7 +3789,9 @@ const SeasonPassDeals = async (body: {
         name: "SeasonPassDeals", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3773,7 +3849,9 @@ const SessionAttributeLinks = async (body: {
         name: "SessionAttributeLinks", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3892,7 +3970,9 @@ const Sessions = async (body: {
         name: "Sessions", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -3948,7 +4028,9 @@ const Settings = async (body: {
         name: "Settings", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -4004,7 +4086,9 @@ const SiteGroupCinemaLinks = async (body: {
         name: "SiteGroupCinemaLinks", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
@@ -4115,7 +4199,9 @@ const SiteGroups = async (body: {
         name: "SiteGroups", // Request identifier for logging and debugging
         timeout: 20000, // Timeout of 20 seconds for the request
         logger(data) {
-          console.log("Request data:", data); // Logs request data for debugging purposes
+          if (config.logger) {
+            console.log(data); // Logs request data for debugging purposes
+          }
         },
       }
     );
