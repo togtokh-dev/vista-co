@@ -1,50 +1,21 @@
-import auth from "./auth";
-import invoice from "./invoice";
-import payment from "./payment";
-import ebarimt from "./ebarimt";
-type authInfoT = {
-  token_type: string;
-  refresh_expires_in: number;
-  refresh_token: string;
-  access_token: string;
-  expires_in: number;
-  scope: string;
-  "not-before-policy": string;
-  session_state: string;
+import v1 from "./v1";
+export const jsonToQueryString = (json: { [key: string]: any }): string => {
+  return Object.keys(json)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(json[key])}`)
+    .join("&");
 };
 
 export const config: {
-  invoice_code: string;
+  token: string;
   host: string;
-  authInfo: authInfoT;
-  auth: {
-    username: string;
-    password: string;
-  };
+  regionCode: string;
 } = {
-  invoice_code: "",
-  host: "https://merchant.qpay.mn",
-  authInfo: {
-    token_type: "",
-    refresh_expires_in: 1,
-    refresh_token: "",
-    access_token: "",
-    expires_in: 1,
-    scope: "",
-    "not-before-policy": "",
-    session_state: "",
-  },
-  auth: {
-    username: "", // username
-    password: "", // password
-  },
+  token: "8dfa4c677b7245e6a5fe4627a9b1d65e",
+  host: "http://122.201.17.122",
+  regionCode: "",
 };
 export default {
-  auth,
-  invoice,
-  payment,
-  ebarimt,
+  v1,
+  jsonToQueryString,
 };
-export { default as invoice } from "./invoice";
-export { default as payment } from "./payment";
-export { default as ebarimt } from "./ebarimt";
+export { default as v1 } from "./v1";
