@@ -11,7 +11,7 @@ async function main() {
       $filter: `CinemaId eq '${cinema.ID}'`,
     });
     if (screens.data) {
-      console.log("screens count ", screens.data.length);
+      console.log(screens.data[0]);
     }
   }
   // console.log(await v1.OData.ScreenAttributes({}));
