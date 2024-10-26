@@ -4249,7 +4249,7 @@ export default {
   GetMemberFieldSettings,
   GetNowShowingScheduledFilms,
   GetNowShowingSessions,
-  GetCinemaScheduledFilms,
+  GetScheduledFilms,
   GetSiteGroupsForCinema,
   IncomeRanges,
   Languages,
