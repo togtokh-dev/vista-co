@@ -2426,7 +2426,7 @@ const GetNowShowingSessions = async (body: {
   }
 };
 // Function to fetch scheduled films for a specific cinema
-const GetCinemaScheduledFilms = async (params: {
+const GetScheduledFilms = async (params: {
   cinemaId?: string;
   salesChannelId?: string;
   filmId?: string;
@@ -2524,14 +2524,14 @@ const GetCinemaScheduledFilms = async (params: {
     const res = await axiosMasterMain(
       {
         method: "GET",
-        url: `${config.host}/WSVistaWebClient/OData.svc/GetCinemaScheduledFilms${queryString}`,
+        url: `${config.host}/WSVistaWebClient/OData.svc/GetScheduledFilms${queryString}`,
         headers: {
           connectapitoken: `${config.token}`, // API token for authentication
           "Content-Type": "application/json",
         },
       },
       {
-        name: "GetCinemaScheduledFilms", // Request identifier for logging
+        name: "GetScheduledFilms", // Request identifier for logging
         timeout: 20000,
         logger(data) {
           if (config.logger) {
