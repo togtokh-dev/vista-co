@@ -443,21 +443,6 @@ const GetSessionSeatPlan = async (
   try {
     // Construct the request URL with the cinemaId and sessionId path parameters.
     let url = `${config.host}/RESTData.svc/cinemas/${cinemaId}/sessions/${sessionId}/seat-plan`;
-
-    // Add query parameters if they are provided
-    const params = new URLSearchParams();
-    if (returnSoldSeatsOnly !== undefined) {
-      params.append("returnSoldSeatsOnly", String(returnSoldSeatsOnly));
-    }
-    if (userSessionId) {
-      params.append("userSessionId", userSessionId);
-    }
-
-    // Append query string to the URL if parameters are present
-    if (params.toString()) {
-      url += `?${params.toString()}`;
-    }
-
     // Send the GET request with headers including API token and region code if provided.
     const res = await axiosMasterMain(
       {
