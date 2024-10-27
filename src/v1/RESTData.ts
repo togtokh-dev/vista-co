@@ -49,7 +49,7 @@ const GetDiscountAvailabilityForCinema = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error: any) {
     // Logs and returns an error message if the request fails.
@@ -166,7 +166,7 @@ const GetSeatPlan = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error: any) {
     // Logs and returns an error message if the request fails.
@@ -349,7 +349,7 @@ const GetSeasonPassDealFilmSessions = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error: any) {
     // Logs and returns an error message if the request fails.
@@ -469,7 +469,7 @@ const GetSessionSeatPlan = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error: any) {
     // Logs and returns an error message if the request fails.
@@ -667,7 +667,7 @@ const GetSessionTickets = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error: any) {
     // Logs and returns an error message if the request fails.
@@ -867,7 +867,7 @@ const GetTicketsForBarcode = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error: any) {
     // Logs and returns an error message if the request fails.
