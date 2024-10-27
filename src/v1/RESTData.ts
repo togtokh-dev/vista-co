@@ -469,7 +469,7 @@ const GetSessionSeatPlan = async (
     return {
       success: true,
       message: "Request successful",
-      data: res,
+      data: res.SeatLayoutData,
     };
   } catch (error: any) {
     // Logs and returns an error message if the request fails.
