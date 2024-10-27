@@ -1,4 +1,4 @@
-import { config } from "..";
+import { config, jsonToQueryString } from "..";
 import { axiosMasterMain } from "axios-master";
 
 // Implementation Notes: This function fetches the discount availability for a specified cinema from the RESTData service.
@@ -21,7 +21,7 @@ const GetDiscountAvailabilityForCinema = async (
 }> => {
   try {
     // Construct the request URL with the cinemaId path parameter.
-    const url = `${config.host}/RESTData.svc/cinemas/${cinemaId}/discount-availability`;
+    const url = `${config.host}/WSVistaWebClient/RESTData.svc/cinemas/${cinemaId}/discount-availability`;
 
     // Send the GET request with headers including API token and region code if provided.
     const res = await axiosMasterMain(
@@ -136,13 +136,9 @@ const GetSeatPlan = async (
   };
 }> => {
   try {
+    const query = jsonToQueryString({ seatLayoutId: seatLayoutId });
     // Construct the request URL with the cinemaId and screenNumber path parameters.
-    let url = `${config.host}/RESTData.svc/cinemas/${cinemaId}/screens/${screenNumber}/seat-plan`;
-
-    // If seatLayoutId is provided, add it as a query parameter
-    if (seatLayoutId) {
-      url += `?seatLayoutId=${seatLayoutId}`;
-    }
+    let url = `${config.host}/WSVistaWebClient/RESTData.svc/cinemas/${cinemaId}/screens/${screenNumber}/seat-plan${query}`;
 
     // Send the GET request with headers including API token and region code if provided.
     const res = await axiosMasterMain(
@@ -325,7 +321,7 @@ const GetSeasonPassDealFilmSessions = async (
 }> => {
   try {
     // Construct the request URL with the cinemaId and promotionId path parameters.
-    const url = `${config.host}/RESTData.svc/cinemas/${cinemaId}/seasonpassdeals/${promotionId}/filmsessions`;
+    const url = `${config.host}/WSVistaWebClient/RESTData.svc/cinemas/${cinemaId}/seasonpassdeals/${promotionId}/filmsessions`;
 
     // Send the GET request with headers including API token and region code if provided.
     const res = await axiosMasterMain(
@@ -441,8 +437,12 @@ const GetSessionSeatPlan = async (
   };
 }> => {
   try {
+    const query = jsonToQueryString({
+      returnSoldSeatsOnly: returnSoldSeatsOnly,
+      userSessionIdP: userSessionId,
+    });
     // Construct the request URL with the cinemaId and sessionId path parameters.
-    let url = `${config.host}/RESTData.svc/cinemas/${cinemaId}/sessions/${sessionId}/seat-plan`;
+    let url = `${config.host}/WSVistaWebClient/RESTData.svc/cinemas/${cinemaId}/sessions/${sessionId}/seat-plan${query}`;
     // Send the GET request with headers including API token and region code if provided.
     const res = await axiosMasterMain(
       {
@@ -627,47 +627,19 @@ const GetSessionTickets = async (
   };
 }> => {
   try {
+    const query = jsonToQueryString({
+      salesChannel: salesChannel,
+      userSessionId: userSessionId,
+      returnOnlyTicketsForLoyaltyMembers: returnOnlyTicketsForLoyaltyMembers,
+      includeLoyaltyTickets: includeLoyaltyTickets,
+      includeNonLoyaltyTickets: includeNonLoyaltyTickets,
+      includeComplimentaryTickets: includeComplimentaryTickets,
+      includePackageTickets: includePackageTickets,
+      includeRedemptionTickets: includeRedemptionTickets,
+      includeAdvanceSalesTickets: includeAdvanceSalesTickets,
+    });
     // Construct the request URL with the cinemaId and sessionId path parameters.
-    let url = `${config.host}/RESTData.svc/cinemas/${cinemaId}/sessions/${sessionId}/tickets`;
-
-    // Build query parameters
-    const params = new URLSearchParams();
-    if (salesChannel) params.append("salesChannel", salesChannel);
-    if (userSessionId) params.append("userSessionId", userSessionId);
-    if (returnOnlyTicketsForLoyaltyMembers !== undefined)
-      params.append(
-        "returnOnlyTicketsForLoyaltyMembers",
-        String(returnOnlyTicketsForLoyaltyMembers)
-      );
-    if (includeLoyaltyTickets !== undefined)
-      params.append("includeLoyaltyTickets", String(includeLoyaltyTickets));
-    if (includeNonLoyaltyTickets !== undefined)
-      params.append(
-        "includeNonLoyaltyTickets",
-        String(includeNonLoyaltyTickets)
-      );
-    if (includeComplimentaryTickets !== undefined)
-      params.append(
-        "includeComplimentaryTickets",
-        String(includeComplimentaryTickets)
-      );
-    if (includePackageTickets !== undefined)
-      params.append("includePackageTickets", String(includePackageTickets));
-    if (includeRedemptionTickets !== undefined)
-      params.append(
-        "includeRedemptionTickets",
-        String(includeRedemptionTickets)
-      );
-    if (includeAdvanceSalesTickets !== undefined)
-      params.append(
-        "includeAdvanceSalesTickets",
-        String(includeAdvanceSalesTickets)
-      );
-
-    // Append query string to the URL if parameters are present
-    if (params.toString()) {
-      url += `?${params.toString()}`;
-    }
+    let url = `${config.host}/WSVistaWebClient/RESTData.svc/cinemas/${cinemaId}/sessions/${sessionId}/tickets${query}`;
 
     // Send the GET request with headers including API token and region code if provided.
     const res = await axiosMasterMain(
@@ -854,47 +826,20 @@ const GetTicketsForBarcode = async (
   };
 }> => {
   try {
+    const query = jsonToQueryString({
+      barcode: barcode,
+      salesChannel: salesChannel,
+      userSessionId: userSessionId,
+      includeComplimentaryTickets: includeComplimentaryTickets,
+      includePackageTickets: includePackageTickets,
+      includeRedemptionTickets: includeRedemptionTickets,
+      includeAdvanceSalesTickets: includeAdvanceSalesTickets,
+      includeNonLoyaltyTickets: includeNonLoyaltyTickets,
+      includeLoyaltyTickets: includeLoyaltyTickets,
+      includeLoyaltyRecognitionTickets: includeLoyaltyRecognitionTickets,
+    });
     // Construct the request URL with the cinemaId and sessionId path parameters.
-    let url = `${config.host}/RESTData.svc/cinemas/${cinemaId}/sessions/${sessionId}/tickets-for-barcode?barcode=${barcode}`;
-
-    // Build query parameters
-    const params = new URLSearchParams();
-    if (salesChannel) params.append("salesChannel", salesChannel);
-    if (userSessionId) params.append("userSessionId", userSessionId);
-    if (includeComplimentaryTickets !== undefined)
-      params.append(
-        "includeComplimentaryTickets",
-        String(includeComplimentaryTickets)
-      );
-    if (includePackageTickets !== undefined)
-      params.append("includePackageTickets", String(includePackageTickets));
-    if (includeRedemptionTickets !== undefined)
-      params.append(
-        "includeRedemptionTickets",
-        String(includeRedemptionTickets)
-      );
-    if (includeAdvanceSalesTickets !== undefined)
-      params.append(
-        "includeAdvanceSalesTickets",
-        String(includeAdvanceSalesTickets)
-      );
-    if (includeNonLoyaltyTickets !== undefined)
-      params.append(
-        "includeNonLoyaltyTickets",
-        String(includeNonLoyaltyTickets)
-      );
-    if (includeLoyaltyTickets !== undefined)
-      params.append("includeLoyaltyTickets", String(includeLoyaltyTickets));
-    if (includeLoyaltyRecognitionTickets !== undefined)
-      params.append(
-        "includeLoyaltyRecognitionTickets",
-        String(includeLoyaltyRecognitionTickets)
-      );
-
-    // Append query string to the URL if parameters are present
-    if (params.toString()) {
-      url += `&${params.toString()}`;
-    }
+    let url = `${config.host}/WSVistaWebClient/RESTData.svc/cinemas/${cinemaId}/sessions/${sessionId}/tickets-for-barcode${query}`;
 
     // Send the GET request with headers including API token and region code if provided.
     const res = await axiosMasterMain(
