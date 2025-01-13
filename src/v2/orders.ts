@@ -240,116 +240,269 @@ export interface SetTicketsResponse {
     requiresVoucher: boolean;
   }>;
 }
-// Reusable request handler
-const handleRequest = async <T>(
-  method: "GET" | "POST" | "DELETE",
-  url: string,
-  data: any = null,
-  name: string
-): Promise<T> => {
+// API Endpoints
+const SessionCreate = async (
+  cinemaId: string
+): Promise<{
+  success: boolean;
+  message: string;
+  data?: GetOrderDetailsResponse["data"];
+}> => {
+  const url = `${config.host}/WSVistaWebClient/orders`;
   try {
     const response = await axiosMasterMain(
       {
-        method,
+        method: "POST",
         url,
         headers: {
           connectapitoken: `${config.token}`,
           "Content-Type": "application/json",
           "Connect-Region-Code": config.regionCode,
         },
-        data,
+        data: { cinemaId },
       },
       {
-        name,
+        name: "Orders",
         timeout: 20000,
         logger(data) {
           if (config.logger) console.log(data);
         },
       }
     );
-
-    return response;
+    return {
+      success: true,
+      data: response.data,
+      message: "Request successful",
+    };
   } catch (error: any) {
-    console.error(`Request failed (${name}):`, error?.response?.data);
-    throw new Error(error?.response?.data?.message || "An error occurred");
+    console.error("Request failed (Orders):", error?.response?.data);
+    return {
+      success: false,
+      data: null,
+      message: error?.response?.data?.message || "An error occurred",
+    };
   }
-};
-
-// API Endpoints
-const SessionCreate = async (
-  cinemaId: string
-): Promise<GetOrderDetailsResponse> => {
-  const url = `${config.host}/WSVistaWebClient/orders`;
-  return handleRequest<GetOrderDetailsResponse>(
-    "POST",
-    url,
-    { cinemaId },
-    "Orders"
-  );
 };
 
 const GetOrderDetails = async (
   req: GetOrderDetailsRequest
-): Promise<GetOrderDetailsResponse> => {
+): Promise<{
+  success: boolean;
+  message: string;
+  data?: GetOrderDetailsResponse["data"];
+}> => {
   const url = `${config.host}/WSVistaWebClient/orders/${req.userSessionId}`;
-  return handleRequest<GetOrderDetailsResponse>(
-    "GET",
-    url,
-    null,
-    "GetOrderDetails"
-  );
+  try {
+    const response = await axiosMasterMain(
+      {
+        method: "GET",
+        url,
+        headers: {
+          connectapitoken: `${config.token}`,
+          "Content-Type": "application/json",
+          "Connect-Region-Code": config.regionCode,
+        },
+      },
+      {
+        name: "GetOrderDetails",
+        timeout: 20000,
+        logger(data) {
+          if (config.logger) console.log(data);
+        },
+      }
+    );
+    return {
+      success: true,
+      data: response.data,
+      message: "Request successful",
+    };
+  } catch (error: any) {
+    console.error("Request failed (GetOrderDetails):", error?.response?.data);
+    return {
+      success: false,
+      data: null,
+      message: error?.response?.data?.message || "An error occurred",
+    };
+  }
 };
 
 const completeEditOrder = async (
   userSessionId: string,
   request: CompleteEditRequest
-): Promise<CompleteEditResponse> => {
+): Promise<{
+  success: boolean;
+  message: string;
+  data?: CompleteEditResponse["data"];
+}> => {
   const url = `${config.host}/orders/${userSessionId}/complete-edit`;
-  return handleRequest<CompleteEditResponse>(
-    "POST",
-    url,
-    request,
-    "CompleteEditOrder"
-  );
+  try {
+    const response = await axiosMasterMain(
+      {
+        method: "POST",
+        url,
+        headers: {
+          connectapitoken: `${config.token}`,
+          "Content-Type": "application/json",
+          "Connect-Region-Code": config.regionCode,
+        },
+        data: request,
+      },
+      {
+        name: "CompleteEditOrder",
+        timeout: 20000,
+        logger(data) {
+          if (config.logger) console.log(data);
+        },
+      }
+    );
+    return {
+      success: true,
+      data: response.data,
+      message: "Request successful",
+    };
+  } catch (error: any) {
+    console.error("Request failed (CompleteEditOrder):", error?.response?.data);
+    return {
+      success: false,
+      data: null,
+      message: error?.response?.data?.message || "An error occurred",
+    };
+  }
 };
 
 const removeDealVoucher = async (
   userSessionId: string,
   request: RemoveDealVoucherRequest
-): Promise<RemoveDealVoucherResponse> => {
+): Promise<{
+  success: boolean;
+  message: string;
+  data?: RemoveDealVoucherResponse["data"];
+}> => {
   const url = `${config.host}/orders/${userSessionId}/deal-voucher`;
-  return handleRequest<RemoveDealVoucherResponse>(
-    "DELETE",
-    url,
-    request,
-    "RemoveDealVoucher"
-  );
+  try {
+    const response = await axiosMasterMain(
+      {
+        method: "DELETE",
+        url,
+        headers: {
+          connectapitoken: `${config.token}`,
+          "Content-Type": "application/json",
+          "Connect-Region-Code": config.regionCode,
+        },
+        data: request,
+      },
+      {
+        name: "RemoveDealVoucher",
+        timeout: 20000,
+        logger(data) {
+          if (config.logger) console.log(data);
+        },
+      }
+    );
+    return {
+      success: true,
+      data: response.data,
+      message: "Request successful",
+    };
+  } catch (error: any) {
+    console.error("Request failed (RemoveDealVoucher):", error?.response?.data);
+    return {
+      success: false,
+      data: null,
+      message: error?.response?.data?.message || "An error occurred",
+    };
+  }
 };
 
 const applyDealVoucher = async (
   userSessionId: string,
   request: ApplyDealVoucherRequest
-): Promise<ApplyDealVoucherResponse> => {
+): Promise<{
+  success: boolean;
+  message: string;
+  data?: ApplyDealVoucherResponse["data"];
+}> => {
   const url = `${config.host}/orders/${userSessionId}/deal-voucher`;
-  return handleRequest<ApplyDealVoucherResponse>(
-    "POST",
-    url,
-    request,
-    "ApplyDealVoucher"
-  );
+  try {
+    const response = await axiosMasterMain(
+      {
+        method: "POST",
+        url,
+        headers: {
+          connectapitoken: `${config.token}`,
+          "Content-Type": "application/json",
+          "Connect-Region-Code": config.regionCode,
+        },
+        data: request,
+      },
+      {
+        name: "ApplyDealVoucher",
+        timeout: 20000,
+        logger(data) {
+          if (config.logger) console.log(data);
+        },
+      }
+    );
+    return {
+      success: true,
+      data: response.data,
+      message: "Request successful",
+    };
+  } catch (error: any) {
+    console.error("Request failed (ApplyDealVoucher):", error?.response?.data);
+    return {
+      success: false,
+      data: null,
+      message: error?.response?.data?.message || "An error occurred",
+    };
+  }
 };
 
 const getLoyaltyPointsPaymentBalance = async (
   userSessionId: string
-): Promise<GetLoyaltyPointsPaymentBalanceResult> => {
+): Promise<{
+  success: boolean;
+  message: string;
+  data?: GetLoyaltyPointsPaymentBalanceResult["data"];
+}> => {
   const url = `${config.host}/orders/${userSessionId}/loyalty-points-payment-balance`;
-  return handleRequest<GetLoyaltyPointsPaymentBalanceResult>(
-    "GET",
-    url,
-    null,
-    "GetLoyaltyPointsPaymentBalance"
-  );
+  try {
+    const response = await axiosMasterMain(
+      {
+        method: "GET",
+        url,
+        headers: {
+          connectapitoken: `${config.token}`,
+          "Content-Type": "application/json",
+          "Connect-Region-Code": config.regionCode,
+        },
+      },
+      {
+        name: "GetLoyaltyPointsPaymentBalance",
+        timeout: 20000,
+        logger(data) {
+          if (config.logger) console.log(data);
+        },
+      }
+    );
+    return {
+      success: true,
+      data: response.data,
+      message: "Request successful",
+    };
+  } catch (error: any) {
+    console.error(
+      "Request failed (GetLoyaltyPointsPaymentBalance):",
+      error?.response?.data
+    );
+    return {
+      success: false,
+      data: null,
+      message: error?.response?.data?.message || "An error occurred",
+    };
+  }
 };
+
 const setTickets = async (
   userSessionId: string,
   sessionId: number,
@@ -360,8 +513,41 @@ const setTickets = async (
   data?: SetTicketsResponse;
 }> => {
   const url = `${config.host}/orders/${userSessionId}/sessions/${sessionId}/set-tickets`;
-  return handleRequest("POST", url, requestBody, "SetTickets");
+  try {
+    const response = await axiosMasterMain(
+      {
+        method: "POST",
+        url,
+        headers: {
+          connectapitoken: `${config.token}`,
+          "Content-Type": "application/json",
+          "Connect-Region-Code": config.regionCode,
+        },
+        data: requestBody,
+      },
+      {
+        name: "SetTickets",
+        timeout: 20000,
+        logger(data) {
+          if (config.logger) console.log(data);
+        },
+      }
+    );
+    return {
+      success: true,
+      data: response.data,
+      message: "Request successful",
+    };
+  } catch (error: any) {
+    console.error("Request failed (SetTickets):", error?.response?.data);
+    return {
+      success: false,
+      data: null,
+      message: error?.response?.data?.message || "An error occurred",
+    };
+  }
 };
+
 // Default export
 export default {
   Orders: SessionCreate,
