@@ -1,4 +1,5 @@
 import v1 from "./v1";
+import v2 from "./v2";
 export const jsonToQueryString = (params: { [key: string]: any }) => {
   const query = Object.keys(params)
     .map(
@@ -21,8 +22,10 @@ export const config: {
 };
 const VISTA = {
   v1,
+  v2,
   config,
   jsonToQueryString,
 };
 export default VISTA;
 export { default as v1 } from "./v1";
+export { default as v2 } from "./v2";
