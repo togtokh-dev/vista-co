@@ -276,7 +276,9 @@ const handleRequest = async <T>(
 };
 
 // API Endpoints
-const Orders = async (cinemaId: string): Promise<GetOrderDetailsResponse> => {
+const SessionCreate = async (
+  cinemaId: string
+): Promise<GetOrderDetailsResponse> => {
   const url = `${config.host}/WSVistaWebClient/orders`;
   return handleRequest<GetOrderDetailsResponse>(
     "POST",
@@ -362,7 +364,8 @@ const setTickets = async (
 };
 // Default export
 export default {
-  Orders,
+  Orders: SessionCreate,
+  SessionCreate,
   GetOrderDetails,
   completeEditOrder,
   removeDealVoucher,
