@@ -21,6 +21,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Check NPM Token
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           if [ -z "$NPM_TOKEN" ]; then
             echo "NPM_TOKEN is not set"
@@ -30,6 +32,8 @@ jobs:
           fi
 
       - name: Log Sanitized NPM Token
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "NPM_TOKEN starts with: ${NPM_TOKEN:0:5}*****"
 
