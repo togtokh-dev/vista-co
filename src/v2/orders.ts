@@ -145,7 +145,7 @@ export interface SetTicketsRequest {
   tickets: Array<{
     ticketDetails: {
       ticketTypeCode: string;
-      priceInCents: number;
+      priceInCents?: number;
       voucherBarcode?: string;
       voucherBarcodePin?: string;
       voucherAreaCategoryCode?: string;
