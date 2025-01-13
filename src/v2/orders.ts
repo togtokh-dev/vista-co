@@ -141,7 +141,105 @@ export interface GetLoyaltyPointsPaymentBalanceResult {
   message: string;
   data?: LoyaltyPointsPaymentBalanceResponse;
 }
-
+export interface SetTicketsRequest {
+  tickets: Array<{
+    ticketDetails: {
+      ticketTypeCode: string;
+      priceInCents: number;
+      voucherBarcode?: string;
+      voucherBarcodePin?: string;
+      voucherAreaCategoryCode?: string;
+      bookingFeeOverrideInCents?: number;
+      thirdPartyMemberScheme?: {
+        memberCard: string;
+        memberDateOfBirth: string; // ISO date format
+      };
+      loyaltyRecognitionId?: number;
+      loyaltyRecognitionSequence?: number;
+    };
+    seats?: Array<{
+      areaNumber: number;
+      rowIndex: number;
+      columnIndex: number;
+    }>;
+  }>;
+  bookingFeeOverrideInCents?: number;
+  bookingMode?: number;
+  useSeatAutoAllocation?: boolean;
+}
+export interface SetTicketsResponse {
+  order: {
+    cinemaId: string;
+    userSessionId: string;
+    orderTotalValueInCents: number;
+    taxValueInCents: number;
+    bookingFeeTotalValueInCents: number;
+    bookingFeeTaxValueInCents: number;
+    ticketFeeTotalValueInCents: number;
+    loyaltyPointsTotalCost: Array<{
+      balanceTypeId: number;
+      points: number;
+      balanceTypeName: string;
+    }>;
+    sessions: Array<{
+      id: number;
+      filmTitle: string;
+      filmClassification: string;
+      startTime: string; // ISO date format
+      allocatedSeating: boolean;
+      tickets: Array<{
+        ticketDetails: {
+          ticketId: number;
+          ticketTypeCode: string;
+          ticketCode: string;
+          description: string;
+          finalPriceInCents: number;
+          originalPriceInCents: number;
+          taxInCents: number;
+          voucherBarcode?: string;
+          loyaltyRecognitionId?: string;
+          loyaltyRecognitionSequence?: number;
+        };
+        seats: Array<{
+          areaCategoryCode: string;
+          areaNumber: number;
+          rowIndex: number;
+          columnIndex: number;
+          rowDisplay: string;
+          columnDisplay: string;
+        }>;
+      }>;
+    }>;
+    concessions: Array<{
+      id: string;
+      itemId: string;
+      description: string;
+      finalPriceInCents: number;
+      originalPriceInCents: number;
+      taxInCents: number;
+    }>;
+    customer: {
+      firstName: string;
+      lastName: string;
+      email: string;
+      phone: string;
+      address: {
+        zipCode: string;
+      };
+    };
+    createdDateUtc: string; // ISO date format
+    expiryDateUtc: string; // ISO date format
+  };
+  suggestedDeals?: Array<{
+    id: string;
+    description: string;
+    isSeasonPass: boolean;
+    isTicketUpgrade: boolean;
+    limitPerOrder: number;
+    requiresLoyalty: boolean;
+    requiresVoucher: boolean;
+  }>;
+}
 // Reusable request handler
 const handleRequest = async <T>(
   method: "GET" | "POST" | "DELETE",
@@ -250,7 +348,18 @@ const getLoyaltyPointsPaymentBalance = async (
     "GetLoyaltyPointsPaymentBalance"
   );
 };
-
+const setTickets = async (
+  userSessionId: string,
+  sessionId: number,
+  requestBody: SetTicketsRequest
+): Promise<{
+  success: boolean;
+  message: string;
+  data?: SetTicketsResponse;
+}> => {
+  const url = `${config.host}/orders/${userSessionId}/sessions/${sessionId}/set-tickets`;
+  return handleRequest("POST", url, requestBody, "SetTickets");
+};
 // Default export
 export default {
   Orders,
@@ -259,4 +368,5 @@ export default {
   removeDealVoucher,
   applyDealVoucher,
   getLoyaltyPointsPaymentBalance,
+  setTickets,
 };
