@@ -334,7 +334,7 @@ const completeEditOrder = async (
   message: string;
   data?: CompleteEditResponse["data"];
 }> => {
-  const url = `${config.host}/orders/${userSessionId}/complete-edit`;
+  const url = `${config.host}/WSVistaWebClient/orders/${userSessionId}/complete-edit`;
   try {
     const response = await axiosMasterMain(
       {
@@ -378,7 +378,7 @@ const removeDealVoucher = async (
   message: string;
   data?: RemoveDealVoucherResponse["data"];
 }> => {
-  const url = `${config.host}/orders/${userSessionId}/deal-voucher`;
+  const url = `${config.host}/WSVistaWebClient/orders/${userSessionId}/deal-voucher`;
   try {
     const response = await axiosMasterMain(
       {
@@ -422,7 +422,7 @@ const applyDealVoucher = async (
   message: string;
   data?: ApplyDealVoucherResponse["data"];
 }> => {
-  const url = `${config.host}/orders/${userSessionId}/deal-voucher`;
+  const url = `${config.host}/WSVistaWebClient/orders/${userSessionId}/deal-voucher`;
   try {
     const response = await axiosMasterMain(
       {
@@ -465,7 +465,7 @@ const getLoyaltyPointsPaymentBalance = async (
   message: string;
   data?: GetLoyaltyPointsPaymentBalanceResult["data"];
 }> => {
-  const url = `${config.host}/orders/${userSessionId}/loyalty-points-payment-balance`;
+  const url = `${config.host}/WSVistaWebClient/orders/${userSessionId}/loyalty-points-payment-balance`;
   try {
     const response = await axiosMasterMain(
       {
@@ -512,7 +512,7 @@ const setTickets = async (
   message: string;
   data?: SetTicketsResponse;
 }> => {
-  const url = `${config.host}/orders/${userSessionId}/sessions/${sessionId}/set-tickets`;
+  const url = `${config.host}/WSVistaWebClient/orders/${userSessionId}/sessions/${sessionId}/set-tickets`;
   try {
     const response = await axiosMasterMain(
       {
