@@ -176,7 +176,7 @@ const completeOrder = async (
 }> => {
   try {
     // Construct the request URL
-    const url = `${config.host}/RESTTicketing.svc/order/payment`;
+    const url = `${config.host}/WSVistaWebClient/RESTTicketing.svc/order/payment`;
 
     // Make the API request
     const response = await axiosMasterMain(
