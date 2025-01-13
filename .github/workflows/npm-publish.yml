@@ -3,7 +3,7 @@ name: Publish to NPM
 on:
   push:
     branches:
-      - main # Runs on push to the main branch
+      - main # Adjust to the branch you want to trigger publishing
 
 jobs:
   publish:
@@ -17,19 +17,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18 # Specify your Node.js version
+          node-version: 18 # Use the version your project supports
           registry-url: https://registry.npmjs.org/
 
-      - name: Configure NPM Token
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - name: Authenticate with NPM
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build package
-        run: npm run build # Adjust this if your project doesn't require a build step
+      - name: Build the package
+        run: npm run build # Only if you have a build step
 
-      - name: Publish package
-        run: npm publish
+      - name: Publish the package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
