@@ -69,7 +69,7 @@ const GetBackgroundJobDetails = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     // Logs and returns an error message if the request fails.

@@ -206,7 +206,7 @@ const completeOrder = async (
     return {
       success: true,
       message: "Order completed successfully",
-      data: response.data as CompleteOrderResponse,
+      data: response as CompleteOrderResponse,
     };
   } catch (error: any) {
     // Handle errors

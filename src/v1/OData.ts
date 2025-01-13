@@ -1580,7 +1580,7 @@ const GetClient = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     // Implementation Notes: Logs and returns an error message if the request fails.
@@ -2100,7 +2100,7 @@ const GetMemberFieldSettings = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data, // The response contains the required, editable, and displayable fields for the loyalty member settings
+      data: res, // The response contains the required, editable, and displayable fields for the loyalty member settings
     };
   } catch (error) {
     // Implementation Notes: Logs and returns an error message if the request fails.

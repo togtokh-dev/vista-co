@@ -271,7 +271,7 @@ const SessionCreate = async (
     );
     return {
       success: true,
-      data: response.data,
+      data: response,
       message: "Request successful",
     };
   } catch (error: any) {
@@ -313,7 +313,7 @@ const GetOrderDetails = async (
     );
     return {
       success: true,
-      data: response.data,
+      data: response,
       message: "Request successful",
     };
   } catch (error: any) {
@@ -357,7 +357,7 @@ const completeEditOrder = async (
     );
     return {
       success: true,
-      data: response.data,
+      data: response,
       message: "Request successful",
     };
   } catch (error: any) {
@@ -401,7 +401,7 @@ const removeDealVoucher = async (
     );
     return {
       success: true,
-      data: response.data,
+      data: response,
       message: "Request successful",
     };
   } catch (error: any) {
@@ -445,7 +445,7 @@ const applyDealVoucher = async (
     );
     return {
       success: true,
-      data: response.data,
+      data: response,
       message: "Request successful",
     };
   } catch (error: any) {
@@ -487,7 +487,7 @@ const getLoyaltyPointsPaymentBalance = async (
     );
     return {
       success: true,
-      data: response.data,
+      data: response,
       message: "Request successful",
     };
   } catch (error: any) {
@@ -535,7 +535,7 @@ const setTickets = async (
     );
     return {
       success: true,
-      data: response.data,
+      data: response,
       message: "Request successful",
     };
   } catch (error: any) {

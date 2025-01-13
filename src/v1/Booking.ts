@@ -61,7 +61,7 @@ const GetBookingDetails = async (requestBody: {
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     console.error("Request failed", error?.response?.data);
@@ -110,7 +110,7 @@ const CancelBooking = async (requestBody: {
     return {
       success: true,
       message: "Booking cancelled successfully",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     console.error("Cancel booking failed", error?.response?.data);
@@ -170,7 +170,7 @@ const MarkBookingAsCollected = async (requestBody: {
     return {
       success: true,
       message: "Booking marked as collected successfully",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     console.error("Mark booking as collected failed", error?.response?.data);
@@ -267,7 +267,7 @@ const RefundBooking = async (requestBody: {
     return {
       success: true,
       message: "Booking refunded successfully",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     console.error("Refund booking failed", error?.response?.data);
@@ -334,7 +334,7 @@ const SearchBooking = async (requestBody: {
     return {
       success: true,
       message: "Booking search successful",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     console.error("Search booking failed", error?.response?.data);
@@ -407,7 +407,7 @@ const GetUnpaidBookingDetails = async (
     return {
       success: true,
       message: "Request successful",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     // Logs and returns an error message if the request fails
@@ -470,7 +470,7 @@ const MarkBookingAsPaid = async (requestBody: {
     return {
       success: true,
       message: "Booking marked as paid successfully",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     // Logs and returns an error message if the request fails
@@ -530,7 +530,7 @@ const StartPaymentForUnpaidBooking = async (requestBody: {
     return {
       success: true,
       message: "Payment started successfully",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     // Logs and returns an error message if the request fails
@@ -588,7 +588,7 @@ const UpdateUnpaidBooking = async (requestBody: {
     return {
       success: true,
       message: "Booking updated successfully",
-      data: res.data,
+      data: res,
     };
   } catch (error) {
     // Logs and returns an error message if the request fails
