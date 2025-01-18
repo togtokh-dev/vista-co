@@ -167,7 +167,6 @@ export interface CompleteOrderResponse {
  * @returns {Promise<{ success: boolean; message: string; data?: CompleteOrderResponse }>}
  */
 const completeOrder = async (
-  userSessionId: string,
   paymentDetails: CompleteOrderRequest
 ): Promise<{
   success: boolean;
@@ -188,10 +187,7 @@ const completeOrder = async (
           "Content-Type": "application/json",
           "Connect-Region-Code": config.regionCode, // Localization
         },
-        data: {
-          ...paymentDetails,
-          UserSessionId: userSessionId,
-        },
+        data: paymentDetails,
       },
       {
         name: "completeOrder",
