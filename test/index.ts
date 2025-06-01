@@ -1,19 +1,28 @@
-import VISTA, { v1, config } from "../src/";
+// /test/index.ts
+import VistaClient from "../src";
+
+// Create an instance of the VistaClient
+const vista = new VistaClient();
+
+// Set the config values
+vista.config.host = "";
+vista.config.token = "";
+vista.config.regionCode = ""; // optional
+vista.config.logger = true; // optional
 
 async function main() {
-  VISTA.config.host = "http://122.201.17.122";
-  VISTA.config.token = "8dfa4c677b7245e6a5fe4627a9b1d65e";
-  const cinemas = await v1.OData.Cinemas({});
-  if (cinemas.data) {
-    const cinema = cinemas.data[0];
-    //  console.log(cinema);
-    const screens = await v1.OData.ScreenAttributes({
+  const cinemasRes = await vista.v1.OData.Cinemas({});
+  if (cinemasRes.data) {
+    const cinema = cinemasRes.data[0];
+
+    const screensRes = await vista.v1.OData.ScreenAttributes({
       $filter: `CinemaId eq '${cinema.ID}'`,
     });
-    if (screens.data) {
-      console.log(screens.data[0]);
+
+    if (screensRes.data) {
+      console.log(screensRes.data[0]);
     }
   }
-  // console.log(await v1.OData.ScreenAttributes({}));
 }
-main();
+
+main().catch(console.error);

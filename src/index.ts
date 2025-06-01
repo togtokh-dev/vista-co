@@ -1,7 +1,8 @@
 // src/lib/vista-co.ts
 
-import v1 from "./v1";
-import v2 from "./v2";
+import createV1 from "./v1"; // renamed to a factory
+import createV2 from "./v2";
+import { BackgroundJob } from "./v1/BackgroundJob";
 
 // Utility to convert a JSON object to a query string
 export const jsonToQueryString = (params: { [key: string]: any }): string => {
@@ -13,11 +14,8 @@ export const jsonToQueryString = (params: { [key: string]: any }): string => {
   return query ? `?${query}` : "";
 };
 
-// Class representing a VISTA API client
+// Vista API Client class
 export class VistaClient {
-  public v1 = v1;
-  public v2 = v2;
-
   public config: {
     token: string;
     host: string;
@@ -30,11 +28,17 @@ export class VistaClient {
     logger: false,
   };
 
+  // Inject config into v1 methods dynamically
+  public get v1() {
+    return createV1(this.config);
+  }
+
+  public get v2() {
+    return createV2(this.config);
+  }
+
   public jsonToQueryString = jsonToQueryString;
 }
 
-// Export the class so other modules can create instances
+// Export the class
 export default VistaClient;
-
-// Optional named exports if needed individually
-export { v1, v2 };

@@ -1,5 +1,6 @@
-import { config, jsonToQueryString } from "..";
+//RESTData.ts
 import { axiosMasterMain } from "axios-master";
+import { jsonToQueryString } from "..";
 export interface CompleteOrderRequest {
   UserSessionId: string;
   PaymentInfo?: {
@@ -158,62 +159,66 @@ export interface CompleteOrderResponse {
   ErrorDescription?: string;
   ExtendedResultCode?: number;
 }
+export const RESTTicketing = (config: {
+  token: string;
+  host: string;
+  regionCode: string;
+  logger: boolean;
+}) => {
+  return {
+    /**
+     * Completes an order with payment details.
+     *
+     * @param {string} userSessionId - The user's session ID.
+     * @param {CompleteOrderRequest} paymentDetails - The payment details and order information.
+     * @returns {Promise<{ success: boolean; message: string; data?: CompleteOrderResponse }>}
+     */
+    completeOrder: async (
+      paymentDetails: CompleteOrderRequest,
+    ): Promise<{
+      success: boolean;
+      message: string;
+      data?: CompleteOrderResponse;
+    }> => {
+      try {
+        // Construct the request URL
+        const url = `${config.host}/WSVistaWebClient/RESTTicketing.svc/order/payment`;
 
-/**
- * Completes an order with payment details.
- *
- * @param {string} userSessionId - The user's session ID.
- * @param {CompleteOrderRequest} paymentDetails - The payment details and order information.
- * @returns {Promise<{ success: boolean; message: string; data?: CompleteOrderResponse }>}
- */
-const completeOrder = async (
-  paymentDetails: CompleteOrderRequest
-): Promise<{
-  success: boolean;
-  message: string;
-  data?: CompleteOrderResponse;
-}> => {
-  try {
-    // Construct the request URL
-    const url = `${config.host}/WSVistaWebClient/RESTTicketing.svc/order/payment`;
+        // Make the API request
+        const response = await axiosMasterMain(
+          {
+            method: "POST",
+            url,
+            headers: {
+              connectapitoken: config.token, // API token
+              "Content-Type": "application/json",
+              "Connect-Region-Code": config.regionCode, // Localization
+            },
+            data: paymentDetails,
+          },
+          {
+            name: "completeOrder",
+            timeout: 20000,
+            logger(data) {
+              if (config.logger) console.log(data);
+            },
+          },
+        );
 
-    // Make the API request
-    const response = await axiosMasterMain(
-      {
-        method: "POST",
-        url,
-        headers: {
-          connectapitoken: config.token, // API token
-          "Content-Type": "application/json",
-          "Connect-Region-Code": config.regionCode, // Localization
-        },
-        data: paymentDetails,
-      },
-      {
-        name: "completeOrder",
-        timeout: 20000,
-        logger(data) {
-          if (config.logger) console.log(data);
-        },
+        // Return success response
+        return {
+          success: true,
+          message: "Order completed successfully",
+          data: response as CompleteOrderResponse,
+        };
+      } catch (error: any) {
+        // Handle errors
+        console.error("CompleteOrder failed:", error?.response?.data || error);
+        return {
+          success: false,
+          message: error?.response?.data?.message || "Failed to complete order",
+        };
       }
-    );
-
-    // Return success response
-    return {
-      success: true,
-      message: "Order completed successfully",
-      data: response as CompleteOrderResponse,
-    };
-  } catch (error: any) {
-    // Handle errors
-    console.error("CompleteOrder failed:", error?.response?.data || error);
-    return {
-      success: false,
-      message: error?.response?.data?.message || "Failed to complete order",
-    };
-  }
-};
-
-export default {
-  completeOrder,
+    },
+  };
 };
