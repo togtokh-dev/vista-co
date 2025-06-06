@@ -1,6 +1,7 @@
 //orders.ts
 import { axiosMasterMain } from "axios-master";
 import { jsonToQueryString } from "..";
+import { AxiosError } from "axios";
 
 // Define types for requests and responses
 export interface GetOrderDetailsRequest {
@@ -282,10 +283,16 @@ export const Orders = (config: {
           message: "Request successful",
         };
       } catch (error: any) {
-        console.error("Request failed (Orders):", error?.response?.data);
+        const axiosError = error as AxiosError<any>;
+        if (axiosError?.response) {
+          console.log(axiosError.response);
+        } else {
+          console.error("Request failed (Orders):", axiosError?.response);
+        }
+
         return {
           success: false,
-          data: null,
+          data: axiosError.response as any,
           message: error?.response?.data?.message || "An error occurred",
         };
       }
@@ -324,13 +331,19 @@ export const Orders = (config: {
           message: "Request successful",
         };
       } catch (error: any) {
-        console.error(
-          "Request failed (GetOrderDetails):",
-          error?.response?.data,
-        );
+        const axiosError = error as AxiosError<any>;
+        if (axiosError?.response) {
+          console.log(axiosError.response);
+        } else {
+          console.error(
+            "Request failed (GetOrderDetails):",
+            axiosError?.response,
+          );
+        }
+
         return {
           success: false,
-          data: null,
+          data: axiosError.response as any,
           message: error?.response?.data?.message || "An error occurred",
         };
       }
@@ -371,13 +384,19 @@ export const Orders = (config: {
           message: "Request successful",
         };
       } catch (error: any) {
-        console.error(
-          "Request failed (CompleteEditOrder):",
-          error?.response?.data,
-        );
+        const axiosError = error as AxiosError<any>;
+        if (axiosError?.response) {
+          console.log(axiosError.response);
+        } else {
+          console.error(
+            "Request failed (CompleteEditOrder):",
+            axiosError?.response,
+          );
+        }
+
         return {
           success: false,
-          data: null,
+          data: axiosError.response as any,
           message: error?.response?.data?.message || "An error occurred",
         };
       }
@@ -418,13 +437,19 @@ export const Orders = (config: {
           message: "Request successful",
         };
       } catch (error: any) {
-        console.error(
-          "Request failed (RemoveDealVoucher):",
-          error?.response?.data,
-        );
+        const axiosError = error as AxiosError<any>;
+        if (axiosError?.response) {
+          console.log(axiosError.response);
+        } else {
+          console.error(
+            "Request failed (RemoveDealVoucher):",
+            axiosError?.response,
+          );
+        }
+
         return {
           success: false,
-          data: null,
+          data: axiosError.response as any,
           message: error?.response?.data?.message || "An error occurred",
         };
       }
@@ -465,13 +490,19 @@ export const Orders = (config: {
           message: "Request successful",
         };
       } catch (error: any) {
-        console.error(
-          "Request failed (ApplyDealVoucher):",
-          error?.response?.data,
-        );
+        const axiosError = error as AxiosError<any>;
+        if (axiosError?.response) {
+          console.log(axiosError.response);
+        } else {
+          console.error(
+            "Request failed (ApplyDealVoucher):",
+            axiosError?.response,
+          );
+        }
+
         return {
           success: false,
-          data: null,
+          data: axiosError.response as any,
           message: error?.response?.data?.message || "An error occurred",
         };
       }
@@ -510,13 +541,19 @@ export const Orders = (config: {
           message: "Request successful",
         };
       } catch (error: any) {
-        console.error(
-          "Request failed (GetLoyaltyPointsPaymentBalance):",
-          error?.response?.data,
-        );
+        const axiosError = error as AxiosError<any>;
+        if (axiosError?.response) {
+          console.log(axiosError.response);
+        } else {
+          console.error(
+            "Request failed (GetLoyaltyPointsPaymentBalance):",
+            axiosError?.response,
+          );
+        }
+
         return {
           success: false,
-          data: null,
+          data: axiosError.response as any,
           message: error?.response?.data?.message || "An error occurred",
         };
       }
@@ -546,7 +583,7 @@ export const Orders = (config: {
           },
           {
             name: "SetTickets",
-            timeout: 20000,
+            timeout: 80000,
             logger(data) {
               if (config.logger) console.log(data);
             },
@@ -558,10 +595,16 @@ export const Orders = (config: {
           message: "Request successful",
         };
       } catch (error: any) {
-        console.error("Request failed (SetTickets):", error?.response?.data);
+        const axiosError = error as AxiosError<any>;
+        if (axiosError?.response) {
+          console.log(axiosError.response);
+        } else {
+          console.error("Request failed (SetTickets):", axiosError?.response);
+        }
+
         return {
           success: false,
-          data: null,
+          data: axiosError.response as any,
           message: error?.response?.data?.message || "An error occurred",
         };
       }

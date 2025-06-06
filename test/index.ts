@@ -5,8 +5,8 @@ import VistaClient from "../src";
 const vista = new VistaClient();
 
 // Set the config values
-vista.config.host = "";
-vista.config.token = "";
+vista.config.host = "http://122.201.17.122";
+vista.config.token = "8dfa4c677b7245e6a5fe4627a9b1d65e";
 vista.config.regionCode = ""; // optional
 vista.config.logger = true; // optional
 
@@ -22,6 +22,8 @@ async function main() {
     if (screensRes.data) {
       console.log(screensRes.data[0]);
     }
+    const da = await vista.v2.Orders.SessionCreate(cinema.ID);
+    console.log("--->", da.data?.order);
   }
 }
 
