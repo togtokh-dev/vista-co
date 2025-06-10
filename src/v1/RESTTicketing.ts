@@ -159,6 +159,13 @@ export interface CompleteOrderResponse {
   ErrorDescription?: string;
   ExtendedResultCode?: number;
 }
+
+export interface OrderCancelResponse {
+  OrderNotFound: boolean;
+  Result: number;
+  ErrorDescription: string;
+  ExtendedResultCode: number;
+}
 export const RESTTicketing = (config: {
   token: string;
   host: string;
@@ -166,6 +173,62 @@ export const RESTTicketing = (config: {
   logger: boolean;
 }) => {
   return {
+    /**
+     * Cancels the order associated with the UserSessionId.
+      Associated cinema order will also be cancelled and any reserved seats will be released as will any other associated resources including 3rd Party Member tickets.
+      Orders may also be cancelled by cleanup-tasks in the background so attempting to cancel an already cancelled order will result in a successful result (the OrderNotFound response property can be used to check for this scenario).
+      Loyalty sessions associated with the UserSessionId will NOT be disconnected, subsequent calls re-using the UserSessionID will retain the member's context.
+     *
+     * @param {string} userSessionId - The user's session ID.
+     * @returns {Promise<{ success: boolean; message: string; data?: OrderCancelResponse }>}
+     */
+    orderCancel: async (
+      UserSessionId: string,
+    ): Promise<{
+      success: boolean;
+      message: string;
+      data?: OrderCancelResponse;
+    }> => {
+      try {
+        // Construct the request URL
+        const url = `${config.host}/WSVistaWebClient/RESTTicketing.svc/order/cancel`;
+
+        // Make the API request
+        const response = await axiosMasterMain(
+          {
+            method: "POST",
+            url,
+            headers: {
+              connectapitoken: config.token, // API token
+              "Content-Type": "application/json",
+              "Connect-Region-Code": config.regionCode, // Localization
+            },
+            data: { UserSessionId },
+          },
+          {
+            name: "orderCancel",
+            timeout: 20000,
+            logger(data) {
+              if (config.logger) console.log(data);
+            },
+          },
+        );
+
+        // Return success response
+        return {
+          success: true,
+          message: "Order Cancel successfully",
+          data: response as OrderCancelResponse,
+        };
+      } catch (error: any) {
+        // Handle errors
+        console.error("CompleteOrder failed:", error?.response?.data || error);
+        return {
+          success: false,
+          message: error?.response?.data?.message || "Failed to complete order",
+        };
+      }
+    },
     /**
      * Completes an order with payment details.
      *
