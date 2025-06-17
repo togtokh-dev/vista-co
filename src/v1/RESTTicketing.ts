@@ -1,7 +1,7 @@
 //RESTData.ts
 import { axiosMasterMain } from "axios-master";
 import { jsonToQueryString } from "..";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 export interface CompleteOrderRequest {
   UserSessionId: string;
   PaymentInfo?: {
@@ -279,16 +279,15 @@ export const RESTTicketing = (config: {
         };
       } catch (error: any) {
         // Handle errors
-        console.error("CompleteOrder failed:", error?.response?.data || error);
-        const axiosError = error as AxiosError<any>;
-        console.log(axiosError.code, axiosError.request);
+        console.error("CompleteOrder failed:", error?.data || error);
+        const axiosError = error as AxiosResponse<any>;
         return {
           success: false,
-          message: `${axiosError?.response?.status} ${axiosError?.code}`,
+          message: `${axiosError?.statusText} ${axiosError?.status}`,
           data: {
-            error: axiosError?.response?.data || axiosError.code,
-            errorCode: axiosError?.code,
-            ...axiosError?.response?.data,
+            error: axiosError?.statusText || axiosError.status,
+            errorCode: axiosError?.status,
+            ...axiosError?.data,
           },
         };
       }
