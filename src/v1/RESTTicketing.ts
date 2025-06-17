@@ -261,7 +261,7 @@ export const RESTTicketing = (config: {
           },
           {
             name: "completeOrder",
-            timeout: 20000,
+            timeout: 80000,
             logger(data) {
               if (config.logger) console.log(data);
             },
